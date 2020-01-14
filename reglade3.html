@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Regla de tres!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <style type="text/css">
+  .label {
+      display: inline-block;
+  }
+  .input {
+      width: 250px;
+  }
+  </style>
+  <body>
+<div id="app">
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+       {{ message }} 
+      </h1>
+      <p class="subtitle">
+        Esta es una <strong>Regla de tres</strong>!
+      </p>
+
+      <p class="">
+          <h3>(primer valor) -  (segundo valor)</h3> <br>
+          <h3>(tercer valor) -   <strong>¿?</strong> </h3><br><br>
+      </p>
+
+      <div class="field">
+        <label class="label">Primer valor</label>
+        <div class="control">
+          <input class="input" type="number" placeholder="Ingrese un número" id="primero">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Segundo Valor</label>
+        <div class="control">
+          <input class="input" type="number" placeholder="Ingrese un número" id="segundo">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Tercer valor</label>
+        <div class="control">
+          <input class="input" type="number" placeholder="Ingrese un número" id="tercero">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Resultado</label>
+        <div class="control">
+          <form class="resultado" id="resultado">
+        </div>
+      </div>
+      <button id="calcular">calcular</button>
+    </div>
+  </section>
+</div>
+  </body>
+  <script>
+ $(function() {
+		//Operaciones matemáticas
+	  $('#calcular').click(function(e) {
+	  	e.preventDefault();
+	  	//Almaceno los valores de los inputs
+	  	var primerValor = $('#primero').val();
+	  	var segundoValor = $('#segundo').val();
+        var tercerValor = $('#tercero').val()
+
+		var resultado = parseFloat(tercerValor) * parseFloat(segundoValor) / parseFloat(primerValor);
+
+	  	//Muestro el resultado
+	    $('#resultado').text(resultado);
+	  });
+	});
+  </script>
+
+  <script>
+  var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Bulma + jquery + VueJS'
+  }
+})
+  </script>
+</html>
